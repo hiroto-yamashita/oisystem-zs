@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<screendef>
+<default>
+  <need-login>true</need-login>
+  <login-redirect-uri>mainmenu</login-redirect-uri>
+  <title>Oisystem-ZS</title>
+</default>
+
+<screen uri="login">
+  <header>shared/head/loginheader.jsp</header>
+  <nocache>true</nocache>
+</screen>
+<screen uri="loginsuccess">
+  <template>loginsuccess.jsp</template>
+</screen>
+<screen uri="shared/shouhinsearch">
+  <template>shared/shouhinsearch.jsp</template>
+</screen>
+<screen uri="shared/shouhinidsearch">
+  <template>shared/shouhinidsearch.jsp</template>
+</screen>
+<screen uri="shared/shiiresakisearch">
+  <template>shared/shiiresakisearch.jsp</template>
+</screen>
+<screen uri="maint/shiiresakiinput">
+  <nocache>true</nocache>
+</screen>
+<screen uri="maint/shouhininput">
+  <nocache>true</nocache>
+</screen>
+<screen uri="shukka/thnsshukkoinput">
+  <nocache>true</nocache>
+</screen>
+<screen uri="shukka/shukkoinputsuccess">
+  <nocache>true</nocache>
+</screen>
+<screen uri="nyuuka/nyuukokakuteisuccess">
+  <nocache>true</nocache>
+</screen>
+<screen uri="shukka/shukkayoteikoushinsuccess">
+  <nocache>true</nocache>
+</screen>
+<screen uri="shukka/shukkayoteiinputsuccess">
+  <nocache>true</nocache>
+</screen>
+<screen uri="shukka/shukkoinput">
+  <nocache>true</nocache>
+</screen>
+<screen uri="hacchuu/hacchuuinput">
+  <nocache>true</nocache>
+</screen>
+<screen uri="hacchuu/hacchuuinputsuccess">
+  <nocache>true</nocache>
+</screen>
+<screen uri="zaiko/tanaoroshiinput">
+  <nocache>true</nocache>
+</screen>
+<screen uri="shukka/shukkayoteiinput">
+  <nocache>true</nocache>
+</screen>
+<screen uri="inputclear">
+  <template>inputclear.jsp</template>
+</screen>
+</screendef>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<project name="Build OisystemZS" default="war" basedir=".">
+
+  <property file="build.properties" />
+
+  <target name="all" depends="init,xdoclet-generate,compile,archive" />
+  <target name="war" depends="init,compile,archive-war" />
+
+  <target name="init">
+
+    <mkdir dir="build" />
+    <mkdir dir="ejb-jar" />
+    <mkdir dir="war/WEB-INF/classes" />
+    <mkdir dir="ear" />
+
+    <path id="jboss.class.path">
+      <fileset dir="${jboss.home}/client/">
+        <include name="*.jar" />
+      </fileset>
+    </path>
+    <path id="servlet.class.path">
+      <pathelement location="${jboss.home}/server/default/deploy/jbossweb-tomcat50.sar\servlet-api.jar" />
+      <pathelement location="${jboss.home}/server/default/deploy/jbossweb-tomcat50.sar\jsp-api.jar" />
+    </path>
+    <path id="xdoclet.class.path">
+      <fileset dir="${xdoclet.home}/lib/">
+        <include name="*.jar"/>
+      </fileset>
+      <path refid="jboss.class.path"/>
+    </path>
+    <path id="compile.class.path">
+      <path refid="jboss.class.path"/>
+      <path refid="servlet.class.path"/>
+      <pathelement location="${jboss.home}/server/default/lib/itext-1.02b.jar" />
+    </path>
+    <copy todir="build/src">
+      <fileset dir="src" />
+    </copy>
+  </target>
+
+  <target name="xdoclet-generate">
+    <taskdef
+       name="ejbdoclet"
+       classname="xdoclet.modules.ejb.EjbDocletTask"
+       classpathref="xdoclet.class.path"
+    />
+    <ejbdoclet
+       destdir="build/src/work"
+       excludedtags="@version,@author"
+       ejbspec="${ejb.version}"
+       force="${xdoclet.force}"
+    >
+      <fileset dir="src/ejb">
+        <include name="**/*Bean.java"/>
+      </fileset>
+      <packageSubstitution packages="session,entity" substituteWith="interfaces"/>
+      <dataobject/>
+      <remoteinterface/>
+      <localinterface/>
+      <homeinterface/>
+      <localhomeinterface/>
+      <entitypk/>
+      <entitybmp/>
+      <entitycmp/>
+      <deploymentdescriptor destdir="ejb-jar/META-INF"/>
+      <jboss version="${jboss.version}"
+        xmlencoding="UTF-8"
+        destdir="ejb-jar/META-INF"
+        typemapping="${type.mapping}"
+        datasource="${datasource.name}"
+        validateXml="false"
+      />
+    </ejbdoclet>
+    <copy todir="build/src/ejb">
+      <fileset dir="build/src/work" includes="**/*CMP.java" />
+    </copy>
+    <copy todir="build/src/shared">
+      <fileset dir="build/src/work" excludes="**/*CMP.java" />
+    </copy>
+  </target>
+
+  <target name="compile">
+    <javac destdir="war/WEB-INF/classes" encoding="SJIS" deprecation="on" debug="on">
+      <classpath refid="compile.class.path" />
+      <src path="build/src/war;build/src/shared" />
+    </javac>
+    <javac destdir="ejb-jar" encoding="SJIS" deprecation="on" debug="on">
+      <classpath refid="compile.class.path" />
+      <src path="build/src/ejb;build/src/shared" />
+    </javac>
+  </target>
+
+  <target name="archive">
+    <jar jarfile="ear/${appname}ejb.jar" basedir="ejb-jar" />
+    <jar jarfile="ear/${appname}.war" basedir="war" />
+  </target>
+
+  <target name="archive-war">
+    <jar jarfile="ear/${appname}.war" basedir="war" />
+  </target>
+
+  <target name="upload">
+    <ftp server="localhost" userid="user" password="pass"
+      remotedir="/oisystem/jboss/server/default/deploy"
+      action="put">
+      <fileset file="ear/${appname}.war" />
+    </ftp>
+  </target>
+
+  <target name="clean">
+    <delete dir="build" />
+    <delete dir="ejb-jar" />
+    <delete dir="war/WEB-INF/classes" />
+    <delete file="ear/${appname}.war" />
+    <delete file="ear/${appname}ejb.jar" />
+    <delete file="${appname}.ear" />
+  </target>
+
+</project>

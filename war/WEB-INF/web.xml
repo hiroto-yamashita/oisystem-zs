@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+  <context-param>
+    <param-name>debug</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>handlerPackage</param-name>
+    <param-value>com.oisix.oisystemzs.eventhandler.</param-value>
+  </context-param>
+  <context-param>
+    <param-name>datasource</param-name>
+    <param-value>DefaultDS</param-value>
+  </context-param>
+  <context-param>
+    <param-name>warInitializer</param-name>
+    <param-value>com.oisix.oisystemfr.DefaultWarInitializer</param-value>
+  </context-param>
+  <context-param>
+    <param-name>urlrewriting</param-name>
+    <param-value>false</param-value>
+  </context-param>
+
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <display-name>EncodingFilter</display-name>
+    <description>no description</description>
+    <filter-class>com.oisix.oisystemfr.EncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>JISAutoDetect</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>ControllerServlet</servlet-name>
+    <servlet-class>com.oisix.oisystemfr.ControllerServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>TransactionStartServlet</servlet-name>
+    <servlet-class>com.oisix.oisystemfr.TransactionStartServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>TransactionServlet</servlet-name>
+    <servlet-class>com.oisix.oisystemfr.TransactionServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>PDFDownloadServlet</servlet-name>
+    <servlet-class>com.oisix.oisystemfr.pdf.PDFDownloadServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>CSVDownloadServlet</servlet-name>
+    <servlet-class>com.oisix.oisystemfr.csv.CSVDownloadServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ControllerServlet</servlet-name>
+    <url-pattern>*.ev</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>TransactionStartServlet</servlet-name>
+    <url-pattern>/TransactionStartServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>TransactionServlet</servlet-name>
+    <url-pattern>/TransactionServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>PDFDownloadServlet</servlet-name>
+    <url-pattern>*.pdf</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>CSVDownloadServlet</servlet-name>
+    <url-pattern>*.csv</url-pattern>
+  </servlet-mapping>
+
+  <taglib>
+    <taglib-uri>/WEB-INF/oisystemfr.tld</taglib-uri>
+    <taglib-location>/WEB-INF/oisystemfr.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/WEB-INF/oisystemzs.tld</taglib-uri>
+    <taglib-location>/WEB-INF/oisystemzs.tld</taglib-location>
+  </taglib>
+
+  <resource-ref>
+    <res-ref-name>/DefaultDS</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+
+  <!-- Oisystem-FR -->
+  <ejb-ref>
+    <ejb-ref-name>ControllerEjbLocal</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ControllerEjbLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ControllerEjbLocal</remote>
+    <ejb-link>ControllerEjb</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/KeyGeneratorLocal</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.KeyGeneratorLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.KeyGeneratorLocal</remote>
+    <ejb-link>KeyGenerator</ejb-link>
+  </ejb-ref>
+
+  <!-- Oisystem-ZS -->
+  <ejb-ref>
+    <ejb-ref-name>ejb/ZaikoLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ZaikoLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ZaikoLocal</remote>
+    <ejb-link>Zaiko</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/HacchuukubunLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.HacchuukubunLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.HacchuukubunLocal</remote>
+    <ejb-link>Hacchuukubun</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/HacchuuLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.HacchuuLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.HacchuuLocal</remote>
+    <ejb-link>Hacchuu</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/LocationLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.LocationLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.LocationLocal</remote>
+    <ejb-link>Location</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/NouhinsakiLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.NouhinsakiLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.NouhinsakiLocal</remote>
+    <ejb-link>Nouhinsaki</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/NyuukayoteimeisaiLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.NyuukayoteimeisaiLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.NyuukayoteimeisaiLocal</remote>
+    <ejb-link>Nyuukayoteimeisai</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/NyuukoLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.NyuukoLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.NyuukoLocal</remote>
+    <ejb-link>Nyuuko</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/NyuukokubunLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.NyuukokubunLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.NyuukokubunLocal</remote>
+    <ejb-link>Nyuukokubun</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/OfficeLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.OfficeLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.OfficeLocal</remote>
+    <ejb-link>Office</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/OndotaiLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.OndotaiLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.OndotaiLocal</remote>
+    <ejb-link>Ondotai</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShiiresakiLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ShiiresakiLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ShiiresakiLocal</remote>
+    <ejb-link>Shiiresaki</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShiiresakiLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ShiiresakiLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ShiiresakiLocal</remote>
+    <ejb-link>Shiiresaki</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShouhinLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ShouhinLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ShouhinLocal</remote>
+    <ejb-link>Shouhin</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShukkayoteiLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ShukkayoteiLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ShukkayoteiLocal</remote>
+    <ejb-link>Shukkayotei</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShukkayoteimeisaiLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ShukkayoteimeisaiLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ShukkayoteimeisaiLocal</remote>
+    <ejb-link>Shukkayoteimeisai</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShukkayoteishubetsuLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ShukkayoteishubetsuLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ShukkayoteishubetsuLocal</remote>
+    <ejb-link>Shukkayoteishubetsu</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShukkoLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ShukkoLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ShukkoLocal</remote>
+    <ejb-link>Shukko</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShukkokubunLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ShukkokubunLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ShukkokubunLocal</remote>
+    <ejb-link>Shukkokubun</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/SoukoLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.SoukoLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.SoukoLocal</remote>
+    <ejb-link>Souko</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/TaniLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.TaniLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.TaniLocal</remote>
+    <ejb-link>Tani</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/TouchakuLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.TouchakuLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.TouchakuLocal</remote>
+    <ejb-link>Touchaku</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/UserLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.UserLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.UserLocal</remote>
+    <ejb-link>User</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ZaikoLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ZaikoLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ZaikoLocal</remote>
+    <ejb-link>Zaiko</ejb-link>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ZaikomeisaiLocal</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.oisix.oisystemfr.ejb.ZaikomeisaiLocalHome</home>
+    <remote>com.oisix.oisystemfr.ejb.ZaikomeisaiLocal</remote>
+    <ejb-link>Zaikomeisai</ejb-link>
+  </ejb-ref>
+
+</web-app>

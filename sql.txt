@@ -1,0 +1,51 @@
+insert into zm_souko values('000001','倉庫1','そうこ1','000-0000','東京都','00-0000-0000','00-0000-0000','000001',now(),0,now(),0);
+insert into zm_office values('000001','事務所1','じむしょ1','111-1111','東京都品川区','01-0000-0000','01-0000-0000',now(),0,now(),0);
+insert into zm_user values(1,'test','テスト','てすと','000001','000001',2,'部署',now(),0,now(),0);
+insert into zm_user values(2,'guest','ゲスト','げすと','000001','000001',3,'部署',now(),0,now(),0);
+
+insert into zm_tani values(1,'パック',now(),0,now(),0);
+insert into zm_tani values(2,'ケース',now(),0,now(),0);
+insert into zm_tani values(3,'箱',now(),0,now(),0);
+insert into zm_tani values(4,'袋',now(),0,now(),0);
+insert into zm_ondotai values(1,'常温',now(),0,now(),0);
+insert into zm_ondotai values(2,'冷蔵',now(),0,now(),0);
+insert into zm_ondotai values(3,'冷凍',now(),0,now(),0);
+
+insert into zm_nyuukokubun values(1, '仕入', now(),0,now(),0);
+insert into zm_nyuukokubun values(2, '初期在庫', now(),0,now(),0);
+insert into zm_nyuukokubun values(3, '返品入庫', now(),0,now(),0);
+insert into zm_shukkokubun values(1, '売上', now(),0,now(),0);
+insert into zm_shukkokubun values(2, 'サンプル', now(),0,now(),0);
+insert into zm_shukkokubun values(3, '廃棄', now(),0,now(),0);
+insert into zm_shukkokubun values(14, '赤伝出庫', now(),0,now(),0);
+insert into zm_shukkokubun values(16, '返品出庫', now(),0,now(),0);
+insert into zm_shukkokubun values(17, '振替出庫', now(),0,now(),0);
+
+insert into zm_shukkayoteishubetsu values(1, '種別1', now(),0,now(),0);
+insert into zm_shukkayoteishubetsu values(2, '種別2', now(),0,now(),0);
+insert into zm_shukkayoteishubetsu values(3, 'その他', now(),0,now(),0);
+
+insert into zm_hacchuukubun values(1, '通常', now(), 0, now(), 0);
+insert into zm_hacchuukubun values(2, 'サンプル', now(), 0, now(), 0);
+
+insert into zm_touchaku values(10, '10時まで', now(), 0, now(), 0);
+insert into zm_touchaku values(12, '午前中', now(), 0, now(), 0);
+insert into zm_touchaku values(14, '12時-14時', now(), 0, now(), 0);
+insert into zm_touchaku values(16, '14時-16時', now(), 0, now(), 0);
+
+insert into zm_nouhinsaki values('000001','倉庫1','そうこ1','000-0000','東京都','00-0000-0000','00-0000-0000',now(),0,now(),0);
+
+insert into zm_shiiresaki values('000001','(株)仕入先1','しいれさき1','かぶしきがいしゃ','','000-0000','栃木県栃木市','00-0000-0000','11-1111-1111','担当1','',now(),0,now(),0);
+insert into zm_shouhin values('7100','トマト','とまと','000001','トマト 桃太郎','','','300g',1,'4kg箱',0,2,12,1,1,3000,250,2,1,1,14,10,1,1,0,'青果','',0,'','','','','',0,now(),0,now(),0,300,'','',0,1,'青果',0,0);
+
+create table sequence (TABLE_NAME VARCHAR(256) NOT NULL PRIMARY KEY, id integer);
+insert into sequence values('ZS_NYUUKO',1);
+insert into sequence values('ZS_ZAIKO',1);
+insert into sequence values('ZS_ZAIKOMEISAI',1);
+insert into sequence values('ZS_SHUKKO',1);
+insert into sequence values('ZS_HACCHUU',1);
+insert into sequence values('ZS_NYUUKAYOTEIMEISAI',1);
+insert into sequence values('ZS_PRINT',1);
+insert into sequence values('ZS_SHUKKAYOTEI',1);
+insert into sequence values('ZS_SHUKKAYOTEIMEISAI',1);
+

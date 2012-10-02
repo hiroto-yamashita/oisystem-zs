@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss-web
+    PUBLIC "-//JBoss//DTD Web Application 2.3//EN"
+    "http://www.jboss.org/j2ee/dtds/jboss-web_3_0.dtd">
+
+<jboss-web>
+  <resource-ref>
+    <res-ref-name>/DefaultDS</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <jndi-name>java:/DefaultDS</jndi-name>
+  </resource-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ControllerEjbLocal</ejb-ref-name>
+    <jndi-name>ControllerEjbLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/KeyGeneratorLocal</ejb-ref-name>
+    <jndi-name>ejb/KeyGeneratorLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/HacchuuLocal</ejb-ref-name>
+    <jndi-name>ejb/HacchuuLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/HacchuukubunLocal</ejb-ref-name>
+    <jndi-name>ejb/HacchuukubunLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/LocationLocal</ejb-ref-name>
+    <jndi-name>ejb/LocationLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/NouhinsakiLocal</ejb-ref-name>
+    <jndi-name>ejb/NouhinsakiLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/NyuukayoteimeisaiLocal</ejb-ref-name>
+    <jndi-name>ejb/NyuukayoteimeisaiLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/NyuukoLocal</ejb-ref-name>
+    <jndi-name>ejb/NyuukoLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/NyuukokubunLocal</ejb-ref-name>
+    <jndi-name>ejb/NyuukokubunLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/OfficeLocal</ejb-ref-name>
+    <jndi-name>ejb/OfficeLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/OndotaiLocal</ejb-ref-name>
+    <jndi-name>ejb/OndotaiLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShiiresakiLocal</ejb-ref-name>
+    <jndi-name>ejb/ShiiresakiLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShouhinLocal</ejb-ref-name>
+    <jndi-name>ejb/ShouhinLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShukkayoteiLocal</ejb-ref-name>
+    <jndi-name>ejb/ShukkayoteiLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShukkayoteimeisaiLocal</ejb-ref-name>
+    <jndi-name>ejb/ShukkayoteimeisaiLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShukkayoteishubetsuLocal</ejb-ref-name>
+    <jndi-name>ejb/ShukkayoteishubetsuLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShukkoLocal</ejb-ref-name>
+    <jndi-name>ejb/ShukkoLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShukkokubunLocal</ejb-ref-name>
+    <jndi-name>ejb/ShukkokubunLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/SoukoLocal</ejb-ref-name>
+    <jndi-name>ejb/SoukoLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ShukkoLocal</ejb-ref-name>
+    <jndi-name>ejb/ShukkoLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/TaniLocal</ejb-ref-name>
+    <jndi-name>ejb/TaniLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/TouchakuLocal</ejb-ref-name>
+    <jndi-name>ejb/TouchakuLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/UserLocal</ejb-ref-name>
+    <jndi-name>ejb/UserLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/HacchuukubunLocal</ejb-ref-name>
+    <jndi-name>ejb/HacchuukubunLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ZaikoLocal</ejb-ref-name>
+    <jndi-name>ejb/ZaikoLocal</jndi-name>
+  </ejb-ref>
+
+  <ejb-ref>
+    <ejb-ref-name>ejb/ZaikomeisaiLocal</ejb-ref-name>
+    <jndi-name>ejb/ZaikomeisaiLocal</jndi-name>
+  </ejb-ref>
+
+</jboss-web>

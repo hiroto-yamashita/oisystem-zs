@@ -1,0 +1,4 @@
+<%@ page contentType="text/html; charset=SJIS" %>
+<%@ taglib uri="/WEB-INF/oisystemfr.tld" prefix="osx" %>
+<%@ taglib uri="/WEB-INF/oisystemzs.tld" prefix="osxzs" %>
+Žd“üæ‚ð“o˜^‚µ‚Ü‚µ‚½B
